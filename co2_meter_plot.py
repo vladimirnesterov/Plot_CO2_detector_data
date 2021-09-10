@@ -19,7 +19,7 @@ and will just through away that day.
 """
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
-import scipy
+import scipy.signal as signal
 import datetime
 import os
 
@@ -74,8 +74,8 @@ for record_file in file_names:
     F.close()
    
 # filter data 
-b, a = scipy.signal.butter(3, 0.2, 'low')
-co2_data = scipy.signal.filtfilt(b, a, co2_data)
+b, a = signal.butter(3, 0.2, 'low')
+co2_data = signal.filtfilt(b, a, co2_data)
 
 # plot data
 fig_co2 = plt.figure()
